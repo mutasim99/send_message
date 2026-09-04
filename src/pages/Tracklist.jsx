@@ -1,77 +1,94 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import TrackHeader from '../components/TrackHeader';
-import RomanticBg from '../components/RomanticBg';
-// import photo1 from '../assets/track1.jpg';
+
+import hira1 from '../assets/hira-1.jpeg';
+import hira2 from '../assets/hira-2.jpeg';
+import hira3 from '../assets/hira-3.jpeg';
+import hira4 from '../assets/hira-4.jpeg';
+import hira5 from '../assets/hira-5.jpeg';
 
 const MILESTONES = [
-  { title: 'The Day We Met', date: 'March 2022', blurb: 'I still remember exactly what you were wearing.', width: 60, img: null },
-  { title: 'That Rainy Trip', date: 'July 2022', blurb: 'We got soaked and laughed the whole way back.', width: 80, img: null },
-  { title: 'The Long Call', date: 'Dec 2022', blurb: 'Talked till 3am and neither of us wanted to hang up.', width: 45, img: null },
-  { title: 'First Fight, First Fix', date: 'Feb 2023', blurb: 'We figured out how to actually talk to each other.', width: 70, img: null },
-  { title: 'Right Now', date: 'Today', blurb: 'Still choosing you. Still my favorite.', width: 95, img: null },
+  { title: 'The Day We Met', date: '21 Feb 2022', blurb: 'The moment I saw you, it felt like a quiet, calming breeze touched my soul.', img: hira1 },
+  { title: 'Learning About You', date: '7 May 2023', blurb: 'Finding out all the little things that make you special.', img: hira2},
+  { title: 'The Long Call', date: '06 Nov 2024', blurb: 'Talking late into the night until you softly fell asleep. I will always smile thinking about those moments.', img: hira3},
+  { title: 'A Perfect Date', date: '7 May 2023', blurb: 'Every moment with you was so special to me. I still think about those happy times a lot.', img: hira4 },
+  { title: 'Unwritten', date: 'Today', blurb: 'A quiet space for whatever life brings next.', img: hira5 },
 ];
-
-const item = {
-  hidden: { opacity: 0, x: -16 },
-  show: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 130, damping: 16 } },
-};
 
 export default function Tracklist() {
   const navigate = useNavigate();
+
   return (
-    <RomanticBg>
-      <motion.div
-        initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }}
-        className="bg-[#EFE4C8]/95 backdrop-blur-sm border border-ink/15 rounded-sm p-8 sm:p-10 max-w-2xl w-full shadow-[0_12px_32px_rgba(59,42,42,0.25)]"
-      >
-        <TrackHeader current={2} total={5} label="our story" />
-        <h1 className="font-hand text-rose text-4xl mb-8 rotate-[-1deg]">tracklist</h1>
-
-        <motion.div
-          initial="hidden" animate="show"
-          variants={{ show: { transition: { staggerChildren: 0.12 } } }}
-          className="divide-y divide-ink/10"
+    <div className="min-h-screen pt-24 pb-12 px-6 md:px-12 relative z-10">
+      
+      <div className="max-w-5xl mx-auto">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 1 }}
+          className="text-center mb-32"
         >
-          {MILESTONES.map((m, i) => (
-            <motion.div key={m.title} variants={item} className="flex gap-4 py-5 first:pt-0 last:pb-0">
-              <div
-                className="w-16 h-16 shrink-0 rounded-sm overflow-hidden border-2 border-white shadow-[2px_3px_6px_rgba(59,42,42,0.3)] bg-rose/20 sepia-[.25] saturate-[.75]"
-                style={{ transform: `rotate(${i % 2 === 0 ? -4 : 4}deg)` }}
-              >
-                {m.img ? (
-                  <img src={m.img} alt={m.title} className="w-full h-full object-cover" />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-ink/30 font-type text-[9px] text-center px-1">photo</div>
-                )}
-              </div>
-
-              <div className="flex-1 min-w-0">
-                <div className="flex justify-between items-baseline gap-2">
-                  <span className="font-type text-ink text-sm truncate">{String(i + 1).padStart(2, '0')}. {m.title}</span>
-                  <span className="font-type text-ink/40 text-[11px] shrink-0">{m.date}</span>
-                </div>
-                <p className="font-type text-ink/60 text-xs mt-1 mb-2">{m.blurb}</p>
-                <div className="h-1.5 bg-ink/10 w-full rounded-full overflow-hidden">
-                  <motion.div
-                    className="h-full bg-teal"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${m.width}%` }}
-                    transition={{ delay: 0.3 + i * 0.1, duration: 0.6 }}
-                  />
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          <p className="font-sans text-[#8B5A5A]/60 text-xs uppercase tracking-[0.4em] mb-4">Chapter I</p>
+          <h1 className="font-serif italic text-[#4A2525] text-5xl md:text-7xl">Our Timeline</h1>
         </motion.div>
 
-        <div className="flex justify-between mt-8 pt-6 border-t border-dashed border-ink/15">
-          <button onClick={() => navigate('/')} className="font-type text-xs text-ink/50 hover:text-ink transition-colors">◀◀ back</button>
-          <motion.button onClick={() => navigate('/bside')} whileHover={{ x: 2 }} className="font-type text-xs text-teal">
-            next track ▶▶
-          </motion.button>
+        <div className="relative">
+          
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-[#E8D8C4] md:-translate-x-1/2"></div>
+
+          {MILESTONES.map((m, i) => {
+            const isEven = i % 2 === 0;
+
+            return (
+              <motion.div 
+                key={m.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className={`relative flex flex-col md:flex-row items-center justify-between mb-24 md:mb-40 group ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+              >
+                
+                <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-[#8B5A5A] -translate-x-1/2 mt-8 md:mt-0 shadow-[0_0_10px_rgba(139,90,90,0.5)]"></div>
+
+                <div className={`w-full md:w-[45%] pl-12 md:pl-0 ${isEven ? 'md:text-right' : 'md:text-left'}`}>
+                  <p className="font-sans text-[#8B5A5A]/60 text-xs tracking-widest mb-2 mt-6 md:mt-0">{m.date}</p>
+                  <h3 className="font-serif text-3xl md:text-4xl text-[#2A2A2A] mb-4">{m.title}</h3>
+                  <p className="font-sans text-[#2A2A2A]/70 text-sm md:text-base leading-relaxed">{m.blurb}</p>
+                </div>
+
+                <div className={`w-full md:w-[45%] pl-12 md:pl-0 mt-8 md:mt-0`}>
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.4 }}
+                    className="w-full bg-[#E8D8C4]/20 border border-white/40 rounded-2xl overflow-hidden shadow-2xl relative"
+                  >
+                    {m.img ? (
+                      <img src={m.img} alt={m.title} className="w-full h-auto block" />
+                    ) : (
+                      <div className="w-full aspect-[4/3] flex items-center justify-center">
+                        <span className="font-serif italic text-[#4A2525]/30 text-lg">Your Photo</span>
+                      </div>
+                    )}
+                  </motion.div>
+                </div>
+
+              </motion.div>
+            );
+          })}
         </div>
-      </motion.div>
-    </RomanticBg>
+
+        <div className="flex justify-between items-center mt-20 pt-10 border-t border-[#E8D8C4] max-w-2xl mx-auto pl-12 md:pl-0">
+          <button onClick={() => navigate('/')} className="font-sans uppercase text-[10px] tracking-widest text-[#2A2A2A]/50 hover:text-[#4A2525] transition-colors">
+            ← Rewind
+          </button>
+          <button onClick={() => navigate('/bside')} className="font-sans uppercase text-[10px] tracking-widest text-[#8B5A5A] hover:text-[#C9A66B] transition-colors flex items-center gap-2">
+            Flip to the B-Side <span>→</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
   );
 }

@@ -1,40 +1,58 @@
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import TrackHeader from '../components/TrackHeader';
-import RomanticBg from '../components/RomanticBg';
-import TapedPhoto from '../components/TapedPhoto';
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
-const MESSAGE = `You can put your real message right here.
-Talk about why she matters, what today means, whatever you actually want to say.`;
+const MESSAGE = `Some chapters don't end with a slam, they just fade into a quiet hum you carry without noticing. And there's a particular kind of silence — the one from nights when a conversation slowly turned into someone falling asleep on the other end — that I don't think fully leaves a person.
+
+Maybe it's true that we don't really miss people, just the shape of the moments they left behind. Either way, some warmth doesn't ask permission to stay. It just does.
+
+I hope life is gentle with you, wherever it's taking you now. And I hope the Almighty keeps you safe and happy, always...`;
 
 export default function Letter() {
   const navigate = useNavigate();
   return (
-    <RomanticBg sprockets>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.97 }}
-        className="bg-[#EFE4C8]/95 backdrop-blur-sm border border-ink/15 rounded-sm p-8 sm:p-10 max-w-3xl w-full shadow-[0_12px_32px_rgba(59,42,42,0.25)] grid md:grid-cols-[1fr_1.3fr] gap-10 items-start mx-3"
-      >
-        <div className="flex flex-col items-center gap-6 order-2 md:order-1">
-          <TapedPhoto rotate={-6} delay={0.2} caption="that day" />
-          <TapedPhoto rotate={5} delay={0.35} caption="us" className="md:ml-10" />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+      className="min-h-screen flex items-center justify-center p-4 md:p-8 relative z-10"
+    >
+      <div className="bg-white/80 backdrop-blur-2xl border border-white p-10 md:p-16 max-w-3xl w-full shadow-glass rounded-sm relative">
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[radial-gradient(#4A2525_1px,transparent_1px)] [background-size:20px_20px]"></div>
+
+        <p className="font-sans text-[#8B5A5A]/40 text-[10px] uppercase tracking-[0.3em] mb-8 text-center">
+          Chapter III
+        </p>
+
+        <h1 className="font-serif italic text-[#4A2525] text-5xl md:text-6xl mb-8">
+          Dear Babai🤍,
+        </h1>
+
+        <p className="font-serif text-[#2A2A2A] text-lg md:text-xl leading-loose whitespace-pre-line relative z-10">
+          {MESSAGE}
+        </p>
+
+        <div className="mt-12 text-right">
+          <p className="font-serif text-lg text-[#2A2A2A] mb-2">With everything unsaid</p>
+          {/* <p className="font-serif italic text-[#8B5A5A] text-4xl">Me</p> */}
         </div>
 
-        <div className="order-1 md:order-2">
-          <TrackHeader current={4} total={5} label="the letter" />
-          <h1 className="font-hand text-rose text-4xl mb-6 rotate-[-1deg]">dear you,</h1>
+        <div className="flex justify-between items-center mt-16 pt-8 border-t border-black/5 relative z-10">
+          <button
+            onClick={() => navigate("/bside")}
+            className="font-sans uppercase text-[10px] tracking-widest text-[#2A2A2A]/50 hover:text-[#4A2525] transition-colors"
+          >
+            ← Previous
+          </button>
 
-          <p className="font-type text-ink text-[15px] leading-8 whitespace-pre-line">{MESSAGE}</p>
-          <p className="font-hand text-teal text-3xl mt-8 rotate-[-1deg]">love, me</p>
-
-          <div className="flex justify-between mt-10 pt-6 border-t border-dashed border-ink/15">
-            <button onClick={() => navigate('/bside')} className="font-type text-xs text-ink/50 hover:text-ink transition-colors">◀◀ back</button>
-            <motion.button onClick={() => navigate('/encore')} whileHover={{ x: 2 }} className="font-type text-xs text-teal">
-              one more thing ▶▶
-            </motion.button>
-          </div>
+          <button
+            onClick={() => navigate("/encore")}
+            className="font-sans uppercase text-[10px] tracking-widest text-[#8B5A5A] hover:text-[#C9A66B] transition-colors flex items-center gap-2"
+          >
+            Wait, One More 🤍
+          </button>
         </div>
-      </motion.div>
-    </RomanticBg>
+      </div>
+    </motion.div>
   );
 }
