@@ -62,7 +62,7 @@ export default function Encore() {
               className="flex flex-col items-center w-full"
             >
               <h1 className="font-script text-burgundy text-6xl md:text-7xl mb-6 drop-shadow-sm">
-                You were a good chapter.
+                You are a good chapter.
               </h1>
               <div className="w-24 h-[1px] bg-gold mb-6"></div>
               <p className="font-serif text-charcoal/70 text-lg md:text-xl italic">
