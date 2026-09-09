@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { motion as m, AnimatePresence } from 'framer-motion';
-import img1 from '../assets/hira-final.jpeg'
+import { useState } from "react";
+import { motion as m, AnimatePresence } from "framer-motion";
+import img1 from "../assets/hira-final.jpeg";
 
 export default function Encore() {
   const [revealed, setRevealed] = useState(false);
@@ -14,14 +14,16 @@ export default function Encore() {
       delay: Math.random() * 2,
       scale: 0.5 + Math.random() * 1, // Random sizes
     }));
-    
+
     setHearts(newHearts);
     setRevealed(true);
   };
 
   return (
     <m.div
-      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className="min-h-screen flex flex-col items-center justify-center p-6 relative z-10 overflow-hidden"
     >
       <div className="text-center z-20 w-full flex flex-col items-center">
@@ -33,31 +35,45 @@ export default function Encore() {
               transition={{ duration: 0.8 }}
               className="flex flex-col items-center"
             >
-              <p className="font-sans text-charcoal/50 text-[10px] uppercase tracking-[0.3em] mb-12">One last thing</p>
-              
+              <p className="font-sans text-charcoal/50 text-[10px] uppercase tracking-[0.3em] mb-12">
+                One last thing
+              </p>
+
               <div className="relative flex items-center justify-center">
-                <m.div 
+                <m.div
                   className="absolute w-32 h-32 rounded-full border border-gold/40"
-                  animate={{ scale: [1, 1.5], opacity: [0.8, 0] }} 
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+                  animate={{ scale: [1, 1.5], opacity: [0.8, 0] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeOut",
+                  }}
                 />
-                <m.div 
+                <m.div
                   className="absolute w-32 h-32 rounded-full border border-burgundy/20"
-                  animate={{ scale: [1, 2], opacity: [0.5, 0] }} 
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
+                  animate={{ scale: [1, 2], opacity: [0.5, 0] }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeOut",
+                    delay: 0.5,
+                  }}
                 />
                 <button
                   onClick={handleTouch}
                   className="w-24 h-24 rounded-full bg-gradient-to-tr from-burgundy to-rosewood text-white shadow-2xl flex items-center justify-center hover:scale-105 transition-transform duration-500 z-10"
                 >
-                  <span className="font-serif italic text-lg tracking-wide">Touch</span>
+                  <span className="font-serif italic text-lg tracking-wide">
+                    Touch
+                  </span>
                 </button>
               </div>
             </m.div>
           ) : (
             <m.div
               key="revealed"
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5, delay: 0.5 }}
               className="flex flex-col items-center w-full"
             >
@@ -72,15 +88,15 @@ export default function Encore() {
               {/* Floating Picture Frame */}
               <m.div
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ 
-                  opacity: 1, 
+                animate={{
+                  opacity: 1,
                   scale: 1,
-                  y: [0, -15, 0] // This creates the soft bouncing/floating effect
+                  y: [0, -15, 0], // This creates the soft bouncing/floating effect
                 }}
-                transition={{ 
+                transition={{
                   opacity: { duration: 1.5, delay: 1.5 },
                   scale: { duration: 1.5, delay: 1.5 },
-                  y: { duration: 4, repeat: Infinity, ease: "easeInOut" } // Repeats forever
+                  y: { duration: 4, repeat: Infinity, ease: "easeInOut" }, // Repeats forever
                 }}
                 className="w-48 h-56 md:w-56 md:h-64 mt-12 bg-white p-3 shadow-2xl rounded-sm border border-black/5 z-20"
               >
@@ -91,13 +107,6 @@ export default function Encore() {
                   </span>
                 </div>
               </m.div>
-              
-              <m.p
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3, duration: 2 }}
-                className="font-sans text-burgundy/40 text-[9px] uppercase tracking-[0.4em] mt-16"
-              >
-                Fin.
-              </m.p>
             </m.div>
           )}
         </AnimatePresence>
@@ -105,26 +114,32 @@ export default function Encore() {
 
       {/* Falling Hearts */}
       <AnimatePresence>
-        {revealed && hearts.map((heart, i) => (
-          <m.div
-            key={i}
-            initial={{ opacity: 0, y: "-10vh", x: `${heart.left}vw`, scale: heart.scale }}
-            animate={{ 
-              opacity: [0, 0.7, 0], 
-              y: "110vh", // Fall past the bottom of the screen
-              rotate: [0, 180, 360] // Spin slightly as they fall
-            }}
-            transition={{ 
-              duration: heart.duration, 
-              delay: heart.delay,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute top-0 text-rosewood/40 pointer-events-none text-2xl z-0"
-          >
-            🤍
-          </m.div>
-        ))}
+        {revealed &&
+          hearts.map((heart, i) => (
+            <m.div
+              key={i}
+              initial={{
+                opacity: 0,
+                y: "-10vh",
+                x: `${heart.left}vw`,
+                scale: heart.scale,
+              }}
+              animate={{
+                opacity: [0, 0.7, 0],
+                y: "110vh", // Fall past the bottom of the screen
+                rotate: [0, 180, 360], // Spin slightly as they fall
+              }}
+              transition={{
+                duration: heart.duration,
+                delay: heart.delay,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="absolute top-0 text-rosewood/40 pointer-events-none text-2xl z-0"
+            >
+              🤍
+            </m.div>
+          ))}
       </AnimatePresence>
     </m.div>
   );
